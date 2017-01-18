@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Progress Bar</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="progressBarController">
+        <div class="jumbotron vertical-center">
+            <div class="container text-center">
+                <h3>Progress Bars</h3>
+                <div class="row">
+                    <div class="col-sm-12" ng-repeat="selectBar in records.bars">
+                        <uib-progressbar class="progress-striped active" ng-model="selectBar" value="(selectBar/100)*records.limit" type="{{type}}" max="records.limit">{{selectBar}}%</uib-progressbar>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <select ng-model="selectValue" class="form-control" ng-change="selectedBarValue(selectValue)" required><option></option>
+    <option  ng-repeat="item in records.bars" value="{{$index}}">#Progress {{$index}}</option>
+    </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <div class="col-sm-3" ng-repeat="button in records.buttons">
+                                        <button type="button" class="btn btn-sm btn-primary" ng-click="changeBarValue(button)">{{button}}</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="alert alert-danger" ng-show="isSelected">
+                                    Please Select Drop Down...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="bower_components/bower-angular-sanitize-master/angular-sanitize.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+        <script src="progress_bars/controller/index.js"></script>
+        <script src="components/version/version.js"></script>
+        <script src="components/version/version-directive.js"></script>
+        <script src="components/version/interpolate-filter.js"></script>
+</body>
+
+</html>
